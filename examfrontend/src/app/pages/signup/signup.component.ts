@@ -4,6 +4,7 @@ import {MatFormFieldModule, MatFormField} from '@angular/material/form-field';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -36,8 +37,7 @@ phone:'',
     this.userService.addUser(this.user).subscribe(
       (data:any)=>{
        console.log(data);
-       this.snack.open('Registration Successfull','X',{
-        duration:2500,})
+       Swal.fire('Success',data.username+' registered successfully!!','success');
       },
       (error:any)=>{
   console.log(error);
