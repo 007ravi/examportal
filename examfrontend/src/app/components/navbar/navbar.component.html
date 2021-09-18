@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+  <a routerLink="/">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+     <mat-icon>menu_book</mat-icon>
+   </button>
+</a>  
+   <span>Examportal</span>
+   <span class="example-spacer"></span>
+   <span (click)="navigateLogin()">Login</span>
+   <button 
+   mat-icon-button class="example-icon favorite-icon" 
+   aria-label="Example icon-button with heart icon"
+   class="mr20"
+   (click)="navigateLogin()"
+   >
+     <mat-icon>login</mat-icon>
+   </button>
+   <span (click)="navigateRegister()"> Register</span>
+   <button
+    mat-icon-button class="example-icon" 
+    aria-label="Example icon-button with share icon"
+    (click)="navigateRegister()"
+    >
+    <mat-icon>app_registration</mat-icon>
+  </button>
+ </mat-toolbar>

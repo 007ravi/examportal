@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userService:UserService,private snack:MatSnackBar) { }
+  constructor(private userService:UserService,private snack:MatSnackBar,private router:Router) { }
 public user={
 username:'',
 password:'',
@@ -47,5 +48,9 @@ phone:'',
       }
     )
   }
+
+  navigateLogin(){
+    this.router.navigateByUrl('/login');
+    }
 
 }

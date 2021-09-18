@@ -1,7 +1,9 @@
-<div class="bootstrap-wrapper">
+<app-navbar></app-navbar>
+<div class="bootstrap-wrapper"> <!--so that bootstrap things run -->
     <div class="container">
         <div style="margin-top:20px">
             <div class="col-md-6 offset-md-3">
+              <mat-card>
                 <div class="container text-center">
                     <img style="width: 150px; height: 150px;" src="../../../assets/register.png" alt=" "/>
                 </div>
@@ -62,9 +64,10 @@
                       </mat-form-field>
                       <div class="container text-center">
                         <button mat-raised-button color="primary">Register</button>
-                        <button mat-raised-button color="accent">Clear</button>
+                        <button mat-raised-button color="accent" class="ml20">Clear</button>
                       </div>
                 </form>
+              </mat-card>
             </div>
         </div>
     </div>
