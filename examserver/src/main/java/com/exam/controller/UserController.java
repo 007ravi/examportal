@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -41,6 +42,12 @@ public class UserController {
      public User getUser(@PathVariable("username") String username)
     {
        return this.userService.getUser(username);
+    }
+
+    @GetMapping("/getAllUsers")
+    public List<User> getAllUser()
+    {
+        return this.userService.getAllUser();
     }
 
     //delete user

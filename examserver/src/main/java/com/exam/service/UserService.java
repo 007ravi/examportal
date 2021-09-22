@@ -3,6 +3,7 @@ package com.exam.service;
 import com.exam.model.User;
 import com.exam.model.UserRole;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
     public User deleteUser(long userId);
     //update user using username
     public User updateUser(User user);
+    //get all user
+    public List<User> getAllUser();
 }

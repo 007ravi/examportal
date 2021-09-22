@@ -8,6 +8,7 @@ import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -60,6 +61,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
         return this.userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return this.userRepository.findAll();
     }
 
 
