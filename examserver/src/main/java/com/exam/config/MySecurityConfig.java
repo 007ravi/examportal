@@ -37,10 +37,10 @@ private JwtAuthenticationFilter jwtAuthenticationFilter;
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
     @Bean
-public PasswordEncoder passwordEncoder(){
-    return NoOpPasswordEncoder.getInstance();
+    public  BCryptPasswordEncoder passwordEncoder(){
+   // return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
 }
 
     @Override

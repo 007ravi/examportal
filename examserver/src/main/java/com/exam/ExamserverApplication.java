@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,9 @@ import java.util.Set;
 public class ExamserverApplication implements CommandLineRunner {
     @Autowired
 	private UserService userService;
+
+    @Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	public static void main(String[] args) {
 		SpringApplication.run(ExamserverApplication.class, args);
 	}
@@ -23,12 +27,14 @@ public class ExamserverApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		///creating admin credentials
+		//one time for creating admin may be in future can be triggered for specifc functionality
 //		System.out.println("starting code");
 //		User user=new User();
 //		user.setFirstName("ravi");
 //		user.setLastName("mishra");
-//		user.setUsername("007");
-//		user.setPassword("aaa");
+//		user.setUsername("ravi");
+//		user.setPassword(this.bCryptPasswordEncoder.encode("ravi"));
 //		user.setEmail("ravi@orange.com");
 //		user.setProfile("default.png");
 //
