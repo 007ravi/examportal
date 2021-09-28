@@ -44,10 +44,12 @@ loginData={
             console.log(this.loginService.getUserRole());
             if(this.loginService.getUserRole()=='Admin'){
                 this.router.navigateByUrl('/admin');
+                this.loginService.loginStatusSubject.next(true);
             }
             else if(this.loginService.getUserRole()=='NORMAL'||this.loginService.getUserRole()=='Normal')
             {
               this.router.navigateByUrl('/user-dashboard');
+              this.loginService.loginStatusSubject.next(true);
             }
             else{
               this.loginService.logOut();

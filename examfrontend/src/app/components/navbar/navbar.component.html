@@ -6,9 +6,9 @@
 </a>  
    <span>Examportal</span>
    <span class="example-spacer"></span>
-   <span (click)="navigateLogin()" *ngIf="!loginService.isLogIn()">Login</span>
+   <span (click)="navigateLogin()" *ngIf="!this.loginService.isLogIn()">Login</span>
    <button 
-   *ngIf="!loginService.isLogIn()"
+   *ngIf="!this.loginService.isLogIn()"
    mat-icon-button class="example-icon favorite-icon" 
    aria-label="Example icon-button with heart icon"
    class="mr20"
@@ -16,9 +16,9 @@
    >
      <mat-icon>login</mat-icon>
    </button>
-   <span (click)="navigateRegister()" *ngIf="!loginService.isLogIn()"> Register</span>
+   <span (click)="navigateRegister()" *ngIf="!this.loginService.isLogIn()"> Register</span>
    <button
-   *ngIf="!loginService.isLogIn()"
+   *ngIf="!this.loginService.isLogIn()"
     mat-icon-button class="example-icon" 
     aria-label="Example icon-button with share icon"
     (click)="navigateRegister()"
@@ -26,14 +26,15 @@
     <mat-icon>app_registration</mat-icon>
   </button>
 
-  <a *ngIf="loginService.isLogIn()"
+  <a *ngIf="this.loginService.isLogIn() && user!=null"
   mat-icon-button
   class="example-icon favorite-icon mr20 ml20"
   >
-   {{loginService.getUser().username}}
+  
+   {{username}}
 </a> 
 
-  <a *ngIf="loginService.isLogIn()"
+  <a *ngIf="this.loginService.isLogIn()"
   (click)="loginService.logOut()"
   [routerLink]="'/signup'"
   mat-icon-button
