@@ -1,8 +1,13 @@
 <mat-toolbar color="primary">
-  <a routerLink="/">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <a *ngIf="userRole=='Admin'" routerLink="/">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
      <mat-icon>menu_book</mat-icon>
    </button>
+</a>  
+<a *ngIf="userRole=='NORMAL'" routerLink="/">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
+ <mat-icon>menu_book</mat-icon>
+</button>
 </a>  
    <span>Examportal</span>
    <span class="example-spacer"></span>
@@ -29,6 +34,7 @@
   <a *ngIf="this.loginService.isLogIn() && user!=null"
   mat-icon-button
   class="example-icon favorite-icon mr20 ml20"
+  routerLink='/admin/profile'
   >
   
    {{username}}

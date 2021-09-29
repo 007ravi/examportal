@@ -38,7 +38,7 @@ phone:'',
     this.userService.addUser(this.user).subscribe(
       (data:any)=>{
        console.log(data);
-       Swal.fire('Success',data.username+' registered successfully!!','success');
+       Swal.fire('Success',data.username+' registered successfully!! User id is '+data.id,'success');
       },
       (error:any)=>{
   console.log(error);

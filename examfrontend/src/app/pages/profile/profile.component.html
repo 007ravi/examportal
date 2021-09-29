@@ -1,1 +1,48 @@
-<p>profile works!</p>
+<mat-card *ngIf="user">
+    <h3>Welcome to profile</h3>
+    <mat-card-content>
+        <div class="bootstap-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    <img 
+                       src="https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg"
+                       alt="profile img"
+                       class="profile-image"
+                    />
+                    <h1 class="mt20">{{user.firstName}} {{ user.lastName}}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table">
+                            <tr *ngIf="user.username">
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr *ngIf="user.id">
+                                <td>UserId</td>
+                                <td>{{user.id}}</td>
+                            </tr>
+                            <tr *ngIf="user.phone">
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr *ngIf="user.authorities[0].authority">
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr *ngIf="user.username">
+                                <td>Status</td>
+                                <td>{{user.enabled ? "ACTIVE":"NOT ACTIVE"}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color='primary'>Update</button>
+        <button mat-raised-button color='accent'>Share</button>
+    </mat-card-actions>
+</mat-card>

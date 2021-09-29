@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn=false;
   user:any;
   username="";
+  userRole="";
   ngOnInit(): void {
     console.log(this.isLoggedIn);
     this.loginService.loginStatusSubject.asObservable().subscribe((data)=>{
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
 console.log(error);
     });
     this.isLoggedIn=this.loginService.isLogIn(); 
+    this.userRole=this.loginService.getUserRole();
     this.user=this.loginService.getUser();
     if(this.user!=null)
     this.username=this.user!.username;
