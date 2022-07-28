@@ -43,12 +43,16 @@ loginData={
             this.loginService.setUser(user);
             console.log(this.loginService.getUserRole());
             if(this.loginService.getUserRole()=='Admin'){
-                this.router.navigateByUrl('/admin');
+                this.router.navigateByUrl('/admin').then(() => {
+                  window.location.reload();
+                });
                 this.loginService.loginStatusSubject.next(true);
             }
             else if(this.loginService.getUserRole()=='NORMAL'||this.loginService.getUserRole()=='Normal')
             {
-              this.router.navigateByUrl('/user-dashboard');
+              this.router.navigateByUrl('/user-dashboard').then(() => {
+                window.location.reload();
+              });
               this.loginService.loginStatusSubject.next(true);
             }
             else{
