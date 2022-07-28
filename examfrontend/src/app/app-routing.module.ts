@@ -10,6 +10,7 @@ import { NormalGuard } from './services/normal.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { LoginguardGuard } from './services/loginguard.guard';
+import { RegisterGuard } from './services/register.guard';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path:'signup',
     component:SignupComponent,
+    canActivate:[RegisterGuard],
     pathMatch:'full',
   },
   {
