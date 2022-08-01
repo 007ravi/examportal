@@ -27,11 +27,11 @@ categories=[
   }
 ]
 
-  constructor(private category:CategoryService) { }
+  constructor(private _category:CategoryService) { }
   
 
   ngOnInit(): void {
-    this.category.categories().subscribe((data:any)=>{
+    this._category.categories().subscribe((data:any)=>{
       this.categories=data;
       console.log(data);
     },
@@ -40,4 +40,16 @@ categories=[
     })
   }
 
+  deleteCategory(cat:any){
+    console.log(cat);
+    this._category.deleteCategory(cat.cid).subscribe((data)=>{
+
+      Swal.fire("Deleted","Category "+cat.title+" deleted.",'success');
+      let removeIndex = this.categories.map(item => item.cid).indexOf(cat.cid);
+      this.categories.splice(removeIndex, 1);
+    },
+    (err)=>{
+      Swal.fire("Error","Error  delete Category "+cat.title,'error');
+    });
+  }
 }

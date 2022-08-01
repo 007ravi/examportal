@@ -4,11 +4,15 @@
       <div class="bootstrap-wrapper">
           <div class="row">
               <div class="col-md-6 offset-md-3">
-                <form action="">
+                <form (ngSubmit)="addCategory()">
                     <mat-form-field class="w100" appearance="outline">
                         <mat-label>Title</mat-label>
-                        <input type="text" name="title" matInput
+                        <input 
+                        required
+                        autofocus
+                         type="text" name="title" matInput
                         placeholder="Enter here"
+                        [(ngModel)]="category.title"
                         >
         
                     </mat-form-field>
@@ -19,15 +23,15 @@
                         matInput
                         placeholder="Enter Description"
                         rows="15"
+                        [(ngModel)]="category.description"
                         >
                         </textarea>
         
                     </mat-form-field>
 
                     <div class="container text-center mt15">
-                        <button mat-raised-button color="success">ADD+</button>
+                        <button mat-raised-button color="success" >ADD+</button>
                     </div>
-                    <mat-icon >plus</mat-icon>
                 </form>
               </div>
           </div>
