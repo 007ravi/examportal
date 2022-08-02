@@ -13,6 +13,7 @@ import { LoginguardGuard } from './services/loginguard.guard';
 import { RegisterGuard } from './services/register.guard';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path:'category',
         component:AddCategoryComponent,
+      },
+      {
+        path:'quizzes',
+        component:ViewQuizzesComponent,
       }
     ]
   },

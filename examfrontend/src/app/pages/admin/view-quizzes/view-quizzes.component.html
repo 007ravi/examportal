@@ -1,0 +1,32 @@
+<mat-card>
+<mat-list  [style.overflow]="'auto'" [style.height.px]="'500'" style="min-height:auto;">
+<mat-card class="mt10 mr20 ml20" *ngFor="let q of quizzes">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{q.title}}</mat-card-title>
+        <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{q.description}}</p>
+    </mat-card-content>
+        <button mat-stroked-button>
+            Questions
+        </button>
+        <button class="ml10" mat-stroked-button>
+            Max Marks {{q.maxMarks}}
+        </button>
+        <button class="ml10" mat-stroked-button>
+            Questions {{q.numberofQues}}
+        </button>
+        <button class="ml10" mat-flat-button color="accent">
+           Update
+        </button>
+        <button class="ml10" mat-flat-button color="accent">
+            Attempts
+         </button>
+</mat-card>
+</mat-list>
+<div class="container text-center mt20">
+    <button mat-raised-button routerLink="/admin/category" color="success">Add New Category</button>
+</div>
+</mat-card>
