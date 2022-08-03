@@ -17,7 +17,7 @@ public class Category {
 
     private String description;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore//whenever we fetch data of category then quizzes will not comes with it to avoid cyclic dependency
     private Set<Quiz> quizzes=new LinkedHashSet<>();
 
