@@ -68,4 +68,28 @@ quizzes=[
     )
   }
 
+  deleteQuiz(quiz:any){
+    Swal.fire({
+      icon:'info',
+      title:'Are you sure?',
+      confirmButtonText:'Delete',
+      showCancelButton:true
+    }).then((result)=>{
+        if(result.isConfirmed){
+          this._quiz.deleteQuiz(quiz.qId).subscribe(
+            (data:any)=>{
+              Swal.fire("Succes!!","Quiz "+quiz.title+" Deleted",'success');
+              let removeIndex = this.quizzes.map(item => item.qId).indexOf(quiz.qId);
+              this.quizzes.splice(removeIndex, 1);
+            },
+            (error)=>{
+              Swal.fire("Error!!","Error in loading Quizzes",'error');
+            }
+          )
+        }
+    })
+
+
+  }
+
 }
