@@ -18,7 +18,7 @@
         <button class="ml10" mat-stroked-button>
             Questions {{q.numberofQues}}
         </button>
-        <button class="ml10" mat-flat-button color="accent">
+        <button [routerLink]="'/admin/updateQuiz/'+q.qId" class="ml10" mat-flat-button color="accent">
            Update
         </button>
         <button class="ml10" mat-flat-button color="accent">
