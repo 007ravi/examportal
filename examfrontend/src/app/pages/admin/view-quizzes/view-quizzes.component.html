@@ -1,10 +1,13 @@
 <mat-card>
+    <!-- <div class="box green" style="display:inline-block"></div><p style="margin-top: 1mm;">Active</p>
+    <div class="box green">Active</div> -->
 <mat-list  [style.overflow]="'auto'" [style.height.px]="'500'" style="min-height:auto;">
-<mat-card class="mt10 mr20 ml20" *ngFor="let q of quizzes">
+<mat-card class="mt10 mr20 ml20" *ngFor="let q of quizzes" [ngStyle]="{'background-color': q.active? 'lightgreen' : 'lightred'}">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{q.title}}</mat-card-title>
-        <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
+        <mat-card-subtitle >{{q.category.title}}</mat-card-subtitle>
+
     </mat-card-header>
     <mat-card-content>
         <p>{{q.description}}</p>
