@@ -21,6 +21,7 @@ public class QuestionController {
     @Autowired
     QuizService quizService;//second method to get question of quiz;
 
+    //return only the number of question which we are passing
     @GetMapping("/quiz/{quizId}")
     public ResponseEntity<?> getQuestionofQuiz(@PathVariable("quizId") long quizId){
 
@@ -40,6 +41,15 @@ public class QuestionController {
        }
         Collections.shuffle(list);
        return ResponseEntity.ok(list);
+    }
+
+    //return all questions
+    @GetMapping("/quiz/all/{quizId}")
+    public ResponseEntity<?> getQuestionofQuizAdmin(@PathVariable("quizId") long quizId){
+        Quiz quiz=new Quiz();
+        quiz.setqId(quizId);
+        Set<Question>questionsOfQuiz= this.questionService.getQuestionsOfQuiz(quiz);
+        return ResponseEntity.ok(questionsOfQuiz);
     }
 
     @GetMapping("/")
