@@ -57,4 +57,16 @@ public class QuizController {
         List<Quiz> quizzes=this.quizService.getQuizzesOfCategory(category);
         return new ResponseEntity<List<Quiz>>(quizzes, HttpStatus.OK);
     }
+
+    //get Active Quizzes
+    @GetMapping("/active")
+    public ResponseEntity<?>getActiveQuizzes(){
+        return new ResponseEntity<List<Quiz>>(this.quizService.getActiveQuizzes(), HttpStatus.OK);
+    }
+    @GetMapping("/category/active/{cid}")
+    public ResponseEntity<?>getActiveQuizzesOfCategory(@PathVariable Long cid){
+        Category c=new Category();
+        c.setCid(cid);
+        return new ResponseEntity<List<Quiz>>(this.quizService.getActiveQuizzesOfCategory(c), HttpStatus.OK);
+    }
 }
