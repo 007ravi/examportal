@@ -28,4 +28,8 @@ return this._http.delete(`${baseUrl}/quiz/`+qid);
   public updateQuiz(quiz:any){
     return this._http.put(`${baseUrl}/quiz/`,quiz);
   }
+
+  public getQuizzesOfCategory(cid:any){
+return this._http.get(`${baseUrl}/quiz/category/${cid}`);
+  }
 }

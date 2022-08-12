@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-load-quiz',
@@ -9,13 +10,14 @@ import { QuizService } from 'src/app/services/quiz.service';
 })
 export class LoadQuizComponent implements OnInit {
 
-  constructor(private _route:ActivatedRoute,private _quizService:QuizService) { }
+  constructor(private _route:ActivatedRoute,private _quizService:QuizService,private _snack:MatSnackBar) { }
 
   catid:any;
   quizData:any;
   ngOnInit(): void {
 this.catid=this._route.snapshot.params.catId;
-console.log(this.catid);
+this._route.params.subscribe((param:any)=>{
+this.catid=param.catId;
 if(this.catid=='all')
 {
   //load all quiz
@@ -32,7 +34,19 @@ console.log(this.quizData);
 else{
   //load quiz of selected category
   console.log(this.catid);
+  this.quizData=[];
+  this._quizService.getQuizzesOfCategory(this.catid).subscribe((data:any)=>{
+this.quizData=data;
+  },
+  (err:any)=>{
+    this._snack.open("Error in loading categories from server",'',{
+      duration:3000,
+    });
+  })
+  // this._quizService.
 }
+})
+
   }
 
 }
