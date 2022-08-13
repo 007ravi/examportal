@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet, Router } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-quiz-instructions',
@@ -12,7 +13,7 @@ export class QuizInstructionsComponent implements OnInit {
 
     qId:any;
     quiz:any;
-  constructor(private _route:ActivatedRoute,private _quizService:QuizService,private _snack:MatSnackBar) { }
+  constructor(private _router:Router, private _route:ActivatedRoute,private _quizService:QuizService,private _snack:MatSnackBar) { }
 
   ngOnInit(): void {
    this.qId= this._route.snapshot.params.qid;
@@ -23,6 +24,23 @@ export class QuizInstructionsComponent implements OnInit {
       this._snack.open("Error in loading categories from server",'',{
         duration:3000,
       });
+    })
+  }
+
+  startQuiz(){
+    Swal.fire({
+      title:'Do you want to start the quiz?',
+      showCancelButton:true,
+      confirmButtonText:'Start',
+      icon:'info',
+      denyButtonText:''
+    }).then((result)=>{
+      if(result.isConfirmed){
+        this._router.navigate(['/start/'+this.qId]);
+      }
+      else{
+        
+      }
     })
   }
 
