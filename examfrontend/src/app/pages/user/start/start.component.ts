@@ -17,6 +17,7 @@ export class StartComponent implements OnInit {
   correctAnswers=0;
   attempted=0;
   isSubmit=false;
+  timer:number=100;
   constructor(private  locationst:LocationStrategy,
     private _route:ActivatedRoute,
     private _questionService:QuestionService
@@ -44,6 +45,8 @@ export class StartComponent implements OnInit {
           q['givenAnswer']='';
           console.log(this.questions);
         });
+        this.timer=this.questions.length * 0.25 * 60;
+        this.startTimer();
       },
       (err)=>{
         Swal.fire("Error!","Error in loading questions of quiz",'error');
@@ -52,6 +55,11 @@ export class StartComponent implements OnInit {
   }
 
   submitQuiz(){
+
+    if(this.timer==0){
+     this.calculateResult();
+    }
+    else{
     Swal.fire({
       title:'Do you want to submit the quiz?',
       showCancelButton:true,
@@ -60,21 +68,45 @@ export class StartComponent implements OnInit {
       denyButtonText:''
     }).then((e)=>{
       if(e.isConfirmed){
-        this.isSubmit=true;
-        this.questions.forEach((q:any) => {
-          if(q.givenAnswer==q.answer){
-            this.correctAnswers++;
-           let marksSingle= this.questions[0].quiz.maxMarks/this.questions.length;
-           this.marksGot+=marksSingle;
-       //    console.log(this.questions);
-          }
-          if(q.givenAnswer.trim()!=''){
-            this.attempted++;
-          }
-
-        });
+        this.calculateResult();
       }
 
     })
+  }
+  }
+
+  calculateResult(){
+    
+    this.isSubmit=true;
+    this.questions.forEach((q:any) => {
+      if(q.givenAnswer==q.answer){
+        this.correctAnswers++;
+       let marksSingle= this.questions[0].quiz.maxMarks/this.questions.length;
+       this.marksGot+=marksSingle;
+   //    console.log(this.questions);
+      }
+      if(q.givenAnswer.trim()!=''){
+        this.attempted++;
+      }
+
+    });
+  }
+
+  startTimer(){
+  let t=  window.setInterval(()=>{
+      if(this.timer<=0){
+        this.submitQuiz();
+        clearInterval(t);
+      }
+      else{
+        this.timer--;
+      }
+    },1000)
+  }
+
+  formattedTimer(){
+    let min=Math.floor(this.timer/60);
+    let sec=this.timer%60;
+    return min+'min :'+sec+'sec';
   }
 }
