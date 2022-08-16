@@ -20,6 +20,7 @@
                         <div class="row mt20">
                             <div class="col-md-6">
                                 <input type="radio"
+                                (click)="radioClicked(q.quesId)"
                                 [value]="q.option1"
                                 [name]="''+i"
                                 [(ngModel)]="q.givenAnswer"
@@ -28,6 +29,7 @@
                             </div>
                             <div class="col-md-6">
                                 <input type="radio"
+                                (click)="radioClicked(q.quesId)"
                                 [value]="q.option2"
                                 [name]="''+i"
                                 [(ngModel)]="q.givenAnswer"
@@ -38,6 +40,7 @@
                         <div class="row mt20">
                             <div class="col-md-6">
                                 <input type="radio"
+                                (click)="radioClicked(q.quesId)"
                                 [value]="q.option3"
                                 [name]="''+i"
                                 [(ngModel)]="q.givenAnswer"
@@ -46,6 +49,7 @@
                             </div>
                             <div class="col-md-6">
                                 <input type="radio"
+                                (click)="radioClicked(q.quesId)"
                                 [value]="q.option4"
                                 [name]="''+i"
                                 [(ngModel)]="q.givenAnswer"
@@ -79,6 +83,19 @@
                     style="margin: auto;"
                     [value]="(timer/(this.questions.length * 0.25 * 60))*100"
                     ></mat-spinner>
+                </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>
+                <mat-card-title>
+                    Questions Attempted!
+                </mat-card-title>
+                <mat-card-subtitle>
+                    Number of attempted questions.
+                </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-progress-bar mode="determinate" [value]="progressValue()"></mat-progress-bar>
                 </mat-card-content>
             </mat-card>
 

@@ -17,6 +17,7 @@ export class StartComponent implements OnInit {
   correctAnswers=0;
   attempted=0;
   isSubmit=false;
+  radioClick:any=[];
   timer:number=100;
   constructor(private  locationst:LocationStrategy,
     private _route:ActivatedRoute,
@@ -76,7 +77,7 @@ export class StartComponent implements OnInit {
   }
 
   calculateResult(){
-    
+    this.attempted=0;
     this.isSubmit=true;
     this.questions.forEach((q:any) => {
       if(q.givenAnswer==q.answer){
@@ -108,5 +109,17 @@ export class StartComponent implements OnInit {
     let min=Math.floor(this.timer/60);
     let sec=this.timer%60;
     return min+'min :'+sec+'sec';
+  }
+
+  radioClicked(qid:any){
+      if(!this.radioClick.includes(qid)){
+        this.radioClick.push(qid);
+      }
+      this.attempted=this.radioClick.length;
+  }
+
+  progressValue(){
+    let progress=(this.attempted)*(100/this.questions.length);
+     return progress;
   }
 }
