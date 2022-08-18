@@ -41,6 +41,7 @@ import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-i
 import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +85,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatSelectModule,
     CKEditorModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
