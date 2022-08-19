@@ -23,13 +23,16 @@ public class Question {
 
     private String answer;
 
+    @Transient
+    private String givenAnswer;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 
     public Question() {
     }
 
-    public Question(Long quesId, String content, String image, String author, String option1, String option2, String option3, String option4, String answer, Quiz quiz) {
+    public Question(Long quesId, String content, String image, String author, String option1, String option2, String option3, String option4, String answer, Quiz quiz,String givenAnswer) {
         this.quesId = quesId;
         this.content = content;
         this.image = image;
@@ -40,6 +43,7 @@ public class Question {
         this.option4 = option4;
         this.answer = answer;
         this.quiz = quiz;
+        this.givenAnswer=givenAnswer;
     }
 
     public Long getQuesId() {
@@ -120,5 +124,13 @@ public class Question {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
+    }
+
+    public String getGivenAnswer() {
+        return givenAnswer;
+    }
+
+    public void setGivenAnswer(String givenAnswer) {
+        this.givenAnswer = givenAnswer;
     }
 }

@@ -1,5 +1,6 @@
 package com.exam.controller;
 
+import com.exam.model.ResultResponse;
 import com.exam.model.exam.Question;
 import com.exam.model.exam.Quiz;
 import com.exam.service.QuestionService;
@@ -80,5 +81,35 @@ public class QuestionController {
     public ResponseEntity<?> get(@PathVariable("quesId") long quesId)
     {
         return ResponseEntity.ok(this.questionService.getQuestion(quesId));
+    }
+
+
+    //evaluating quiz
+    @PostMapping("/eval-quiz")
+    public ResponseEntity<ResultResponse> evalQuiz(@RequestBody List<Question> questions){
+       int  marksGot=0;
+       int correctAnswers=0;
+       int attempted=0;
+       for(Question q:questions){
+            Question question=this.questionService.getQuestion(q.getQuesId());
+            if(question.getAnswer().equals(q.getGivenAnswer())){
+                //correct
+                correctAnswers++;
+                Double marksSingle= Double.parseDouble(q.getQuiz().getMaxMarks())/questions.size();
+                     marksGot+=marksSingle;
+            }
+
+           if(q.getGivenAnswer()!=null && !q.getGivenAnswer().trim().equals("")){
+                      attempted++;
+           }
+
+            q.getQuesId();
+        }
+
+       //res.add(marksGot);res.add(correctAnswers);res.add(attempted);
+        Map<Object,Object>resultMap=Map.of("attempted",attempted,"correctAnswers",correctAnswers,"marksGot",marksGot);
+
+        ResultResponse result=new ResultResponse(attempted,correctAnswers,marksGot);
+        return ResponseEntity.ok(result);
     }
 }
