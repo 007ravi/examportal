@@ -43,7 +43,7 @@ export class StartComponent implements OnInit {
       (data)=>{
         this.questions=data;
         this.questions.forEach((q:any) => {
-          q['givenAnswer']='';
+         // q['givenAnswer']=''; dont need to add now as i have added that in backend server model
           console.log(this.questions);
         });
         this.timer=this.questions.length * 0.25 * 60;
@@ -77,20 +77,33 @@ export class StartComponent implements OnInit {
   }
 
   calculateResult(){
-    this.attempted=0;
-    this.isSubmit=true;
-    this.questions.forEach((q:any) => {
-      if(q.givenAnswer==q.answer){
-        this.correctAnswers++;
-       let marksSingle= this.questions[0].quiz.maxMarks/this.questions.length;
-       this.marksGot+=marksSingle;
-   //    console.log(this.questions);
-      }
-      if(q.givenAnswer.trim()!=''){
-        this.attempted++;
-      }
 
-    });
+//calculate quiz
+this._questionService.evalQuiz(this.questions).subscribe((data:any)=>{
+console.log(data);
+this.marksGot=data.marksGot;
+this.attempted=data.attempted;
+this.correctAnswers=data.correctAnswers;
+this.isSubmit=true;
+},
+(err)=>{
+console.log(err);
+})
+     
+  //   this.attempted=0;
+  //   this.isSubmit=true;
+  //   this.questions.forEach((q:any) => {
+  //     if(q.givenAnswer==q.answer){
+  //       this.correctAnswers++;
+  //      let marksSingle= this.questions[0].quiz.maxMarks/this.questions.length;
+  //      this.marksGot+=marksSingle;
+  //  //    console.log(this.questions);
+  //     }
+  //     if(q.givenAnswer.trim()!=''){
+  //       this.attempted++;
+  //     }
+
+  //   });
   }
 
   startTimer(){

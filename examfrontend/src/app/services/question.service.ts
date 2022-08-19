@@ -26,4 +26,8 @@ return this._http.get(`${baseUrl}/question/quiz/all/${qId}`)
   public getQuestionOfQuizForTest(qId:any){
     return this._http.get(`${baseUrl}/question/quiz/${qId}`);
       }
+
+  public evalQuiz(questions:any){
+    return this._http.post(`${baseUrl}/question/eval-quiz`,questions);
+  }
 }

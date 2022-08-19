@@ -1,6 +1,8 @@
 package com.exam.model.exam;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,7 @@ public class Question {
     private String option3;
     private String option4;
 
+  //  @JsonIgnore//ignore this field when sending response of question model to  client
     private String answer;
 
     @Transient
