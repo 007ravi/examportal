@@ -4,7 +4,17 @@
         <div class="row">
         <div class="col-md-2">
             <!-- instructions -->
-            Instruction
+            <mat-card style="margin-top: 70px;">
+                <mat-card-content>
+                    <h3>Instruction</h3> 
+            <ul>
+                <li>Don't referesh the page otherwise you will fail.</li>
+                <li>Don't switch the tab</li>
+                <li>Dont minimize the window</li>
+            </ul>
+                </mat-card-content>
+            </mat-card>
+           
         </div>
         <div class="col-md-8">
             <!-- questions -->
@@ -120,7 +130,7 @@
                     <h1>Ouestions Attempted: {{attempted}}</h1>
                 </mat-card-content>
                 <mat-card-actions class="text-center">
-                    <button mat-raised-button color="primary">
+                    <button (click)="printPage()"mat-raised-button color="primary">
                         Print
                     </button>
                     <button mat-raised-button color="accent" [routerLink]="'/user-dashboard/all'">

@@ -135,4 +135,8 @@ console.log(err);
     let progress=(this.attempted)*(100/this.questions.length);
      return progress;
   }
+
+  printPage(){
+    window.print();
+  }
 }
