@@ -2,6 +2,7 @@ package com.exam.model.exam;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -113,10 +114,12 @@ public class Question {
         this.option4 = option4;
     }
 
+    //@JsonIgnore  ignore when we are recieving json #48
     public String getAnswer() {
         return answer;
     }
 
+    //@JsonProperty("answer")   will help in saving this value in db #48
     public void setAnswer(String answer) {
         this.answer = answer;
     }

@@ -34,12 +34,16 @@ public class QuestionController {
 
         Quiz quiz=this.quizService.getQuiz(quizId);
        Set<Question>questions= quiz.getQuestions();
-       List list=new ArrayList(questions);
+       List<Question> list=new ArrayList(questions);
        if(list.size()>Integer.parseInt(quiz.getNumberofQues())){
            //true means you have more question count that you have to send
            list=list.subList(0,Integer.parseInt(quiz.getNumberofQues()+1));
 
        }
+
+       list.forEach((q)->{
+           q.setAnswer("");
+       });
         Collections.shuffle(list);
        return ResponseEntity.ok(list);
     }
