@@ -30,4 +30,12 @@ return this._http.get(`${baseUrl}/question/quiz/all/${qId}`)
   public evalQuiz(questions:any){
     return this._http.post(`${baseUrl}/question/eval-quiz`,questions);
   }
+
+  public getQuestionById(quesId:any){
+    return this._http.get(`${baseUrl}/question/${quesId}`);
+  }
+
+  public updateQuestion(question:any){
+    return this._http.put(`${baseUrl}/question/`,question);
+  }
 }

@@ -42,6 +42,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
+import { UpdateQuestionsComponent } from './pages/admin/update-questions/update-questions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
     UserSideBar,
     LoadQuizComponent,
     QuizInstructionsComponent,
-    StartComponent
+    StartComponent,
+    UpdateQuestionsComponent
   ],
   imports: [
     BrowserModule,
